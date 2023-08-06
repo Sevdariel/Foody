@@ -51,6 +51,7 @@ namespace API.Controllers
 
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
+            // ToDo: Add bytes array operations helper class
             if (!computedHash.SequenceEqual(user.PasswordHash))
                 return Unauthorized("Invalid password");
 
