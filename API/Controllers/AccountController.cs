@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Dto;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
@@ -11,14 +12,16 @@ namespace API.Controllers
     public class AccountController : BaseApiController
     {
         private readonly DataContext dataContext;
+        private readonly ITokenService tokenService;
 
-        public AccountController(DataContext dataContext)
+        public AccountController(DataContext dataContext, ITokenService tokenService)
         {
             this.dataContext = dataContext;
+            this.tokenService = tokenService;
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(RegisterDto registerDto)
+        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if (await UserExists(registerDto.Username))
                 return BadRequest("Username is taken");
@@ -36,11 +39,15 @@ namespace API.Controllers
 
             await dataContext.SaveChangesAsync();
 
-            return user;
+            return new UserDto
+            {
+                Username = user.Username,
+                Token = tokenService.CreateToken(user)
+            };
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<User>> Login(LoginDto loginDto)
+        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await dataContext.Users.SingleOrDefaultAsync(user => user.Username == loginDto.Username);
 
@@ -55,10 +62,14 @@ namespace API.Controllers
             if (!computedHash.SequenceEqual(user.PasswordHash))
                 return Unauthorized("Invalid password");
 
-            return user;
+            return new UserDto
+            {
+                Username = user.Username,
+                Token = tokenService.CreateToken(user)
+            };
         }
 
-        
+
         private async Task<bool> UserExists(string username)
         {
             return await dataContext.Users.AnyAsync(user => user.Username == username.ToLower());
