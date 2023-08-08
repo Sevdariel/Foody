@@ -7,7 +7,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "weatherforecast"
     },
     "IIS Express": {
