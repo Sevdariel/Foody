@@ -4,4 +4,15 @@
     <a mat-button>Produkty</a>
     <a mat-button>Przepisy</a>
     <a mat-button>Profil</a>
+    <form [formGroup]="loginFormGroup">
+        <mat-form-field>
+            <mat-label>Login</mat-label>
+            <input class="input" matInput placeholder="Login" formControlName="login" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Hasło</mat-label>
+            <input matInput placeholder="Hasło" formControlName="password" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="login()">Zaloguj</button>
+    </form>
 </mat-toolbar>

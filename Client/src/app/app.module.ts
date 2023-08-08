@@ -5,16 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuModule } from './menu/menu.module';
+import { FormsModule } from '@angular/forms';
+import { MaterialLoaderModule } from './material-loader/material-loader.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MaterialLoaderModule,
     MenuModule,
   ],
   providers: [],
