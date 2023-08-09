@@ -1,0 +1,13 @@
+<div class="login-fields-div">
+    <form [formGroup]="loginFormGroup" class="login-form-group" autocomplete="off" (ngSubmit)="login()">
+        <mat-form-field class=" login-mat-form-field">
+            <mat-label>Login</mat-label>
+            <input class="input" matInput type="text" placeholder="Login" formControlName="username" />
+        </mat-form-field>
+        <mat-form-field class="password-mat-form-field">
+            <mat-label>Hasło</mat-label>
+            <input matInput placeholder="Hasło" type="password" formControlName="password" />
+        </mat-form-field>
+        <button class="nav-bar-login-button" mat-raised-button color="accent" type="submit">Zaloguj</button>
+    </form>
+</div>
