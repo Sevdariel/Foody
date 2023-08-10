@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { AccountService } from 'src/app/shared/account/account.service';
 import { ILoginDto } from 'src/app/shared/account/login-dto.model';
+import { NavBarService } from './../../shared/nav-bar/nav-bar.service';
 
 @Component({
   selector: 'app-nav-bar-login',
@@ -15,6 +16,7 @@ export class NavBarLoginComponent {
   private destroyed$ = new Subject();
 
   constructor(
+    public navBarService: NavBarService,
     private accountService: AccountService,
     formBuilder: FormBuilder,
   ) {
@@ -35,9 +37,16 @@ export class NavBarLoginComponent {
         takeUntil(this.destroyed$),
       )
       .subscribe({
-        next: response => console.log(response),
+        next: response => {
+          console.log(response);
+          this.navBarService.logIn();
+        },
         error: error => console.log(error),
         complete: () => { }
       });
+  }
+
+  public logout() {
+    this.navBarService.logOut();
   }
 }

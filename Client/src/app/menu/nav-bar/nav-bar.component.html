@@ -1,8 +1,20 @@
 <mat-toolbar class="nav-bar" color="primary">
     <span>Foody</span>
     <div class="spacer"></div>
-    <a mat-button>Produkty</a>
-    <a mat-button>Przepisy</a>
-    <a mat-button>Profil</a>
+    <div *ngIf="navBarService.isLogIn()">
+        <a mat-button>Produkty</a>
+        <a mat-button>Przepisy</a>
+        <a mat-button>Profil</a>
+        <mat-menu #appMenu="matMenu">
+            <ng-template matMenuContent>
+                <button mat-menu-item>Profil</button>
+                <button mat-menu-item>Wyloguj</button>
+            </ng-template>
+        </mat-menu>
+
+        <button mat-flat-button color="primary" [matMenuTriggerFor]="appMenu">
+            <a>Użytkownik</a>
+        </button>
+    </div>
     <app-nav-bar-login></app-nav-bar-login>
 </mat-toolbar>

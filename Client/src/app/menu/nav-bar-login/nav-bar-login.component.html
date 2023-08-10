@@ -1,4 +1,4 @@
-<div class="login-fields-div">
+<div class="login-fields-div" *ngIf="!navBarService.isLogIn(); else loggedOut">
     <form [formGroup]="loginFormGroup" class="login-form-group" autocomplete="off" (ngSubmit)="login()">
         <mat-form-field class=" login-mat-form-field">
             <mat-label>Login</mat-label>
@@ -11,3 +11,6 @@
         <button class="nav-bar-login-button" mat-raised-button color="accent" type="submit">Zaloguj</button>
     </form>
 </div>
+<ng-template #loggedOut>
+
+</ng-template>

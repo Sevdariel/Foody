@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavBarService } from './../../shared/nav-bar/nav-bar.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  model: any = {};
+
+  constructor(public navBarService: NavBarService) {
+
+  }
 }
