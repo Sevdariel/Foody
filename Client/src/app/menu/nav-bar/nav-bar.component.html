@@ -8,7 +8,7 @@
         <mat-menu #appMenu="matMenu">
             <ng-template matMenuContent>
                 <button mat-menu-item>Profil</button>
-                <button mat-menu-item>Wyloguj</button>
+                <button mat-menu-item (click)="navBarService.logOut()">Wyloguj</button>
             </ng-template>
         </mat-menu>
 
