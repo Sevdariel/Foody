@@ -1,10 +1,8 @@
-import { IUserDto } from './../../shared/account/login-dto.model';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Subject, filter, map, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { AccountService } from 'src/app/shared/account/account.service';
 import { ILoginDto } from 'src/app/shared/account/login-dto.model';
-import { NavBarService } from './../../shared/nav-bar/nav-bar.service';
 
 @Component({
   selector: 'app-nav-bar-login',
@@ -17,8 +15,7 @@ export class NavBarLoginComponent {
   private destroyed$ = new Subject();
 
   constructor(
-    public navBarService: NavBarService,
-    private accountService: AccountService,
+    public accountService: AccountService,
     formBuilder: FormBuilder,
   ) {
     this.loginFormGroup = formBuilder.group({
@@ -40,7 +37,6 @@ export class NavBarLoginComponent {
       .subscribe({
         next: response => {
           console.log(response);
-          this.navBarService.logIn();
         },
         error: error => console.log(error),
         complete: () => { }
@@ -48,6 +44,6 @@ export class NavBarLoginComponent {
   }
 
   public logout() {
-    this.navBarService.logOut();
+    this.accountService.logout();
   }
 }

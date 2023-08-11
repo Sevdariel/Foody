@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavBarService } from './../../shared/nav-bar/nav-bar.service';
+import { AccountService } from 'src/app/shared/account/account.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +8,5 @@ import { NavBarService } from './../../shared/nav-bar/nav-bar.service';
 })
 export class NavBarComponent {
 
-  constructor(public navBarService: NavBarService) {
-
-  }
+  constructor(public accountService: AccountService) { }
 }

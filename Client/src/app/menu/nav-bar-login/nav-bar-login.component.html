@@ -1,4 +1,4 @@
-<div class="login-fields-div" *ngIf="!navBarService.isLogIn(); else loggedOut">
+<div class="login-fields-div" *ngIf="!(accountService.currentUser$ | async); else loggedOut">
     <form [formGroup]="loginFormGroup" class="login-form-group" autocomplete="off" (ngSubmit)="login()">
         <mat-form-field class=" login-mat-form-field">
             <mat-label>Login</mat-label>

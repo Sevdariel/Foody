@@ -1,4 +1,4 @@
-import { IUserDto } from './shared/account/login-dto.model';
+import { IUser } from './shared/account/login-dto.model';
 import { AccountService } from 'src/app/shared/account/account.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -18,6 +18,11 @@ export class AppComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
+    this.getUsers();
+    this.setCurrentUser();
+  }
+
+  public getUsers() {
     this.httpClient.get('https://localhost:5001/api/users')
       .subscribe({
         next: response => this.users = response,
@@ -26,7 +31,12 @@ export class AppComponent implements OnInit {
       });
   }
 
-  public setCurrentUser(user: IUserDto) {
-    const loggedUser: IUserDto = JSON.parse(localStorage.getItem('user')!);
+  public setCurrentUser() {
+    const loggedUser: IUser = JSON.parse(localStorage.getItem('user')!);
+
+    if (!loggedUser)
+      return;
+
+    this.accountService.setCurrentUser(loggedUser);
   }
 }

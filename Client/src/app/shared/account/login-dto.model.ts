@@ -3,7 +3,7 @@ export interface ILoginDto {
     password: string;
 }
 
-export interface IUserDto {
+export interface IUser {
     username: string;
     token: string;
 }

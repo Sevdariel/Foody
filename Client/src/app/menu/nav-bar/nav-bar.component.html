@@ -1,14 +1,14 @@
 <mat-toolbar class="nav-bar" color="primary">
     <span>Foody</span>
     <div class="spacer"></div>
-    <div *ngIf="navBarService.isLogIn()">
+    <div *ngIf="accountService.currentUser$ | async">
         <a mat-button>Produkty</a>
         <a mat-button>Przepisy</a>
         <a mat-button>Profil</a>
         <mat-menu #appMenu="matMenu">
             <ng-template matMenuContent>
                 <button mat-menu-item>Profil</button>
-                <button mat-menu-item (click)="navBarService.logOut()">Wyloguj</button>
+                <button mat-menu-item (click)="accountService.logout()">Wyloguj</button>
             </ng-template>
         </mat-menu>
 
