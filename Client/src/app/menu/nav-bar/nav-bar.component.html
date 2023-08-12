@@ -1,20 +1,26 @@
-<mat-toolbar class="nav-bar" color="primary">
-    <span>Foody</span>
-    <div class="spacer"></div>
-    <div *ngIf="accountService.currentUser$ | async">
-        <a mat-button>Produkty</a>
-        <a mat-button>Przepisy</a>
-        <a mat-button>Profil</a>
-        <mat-menu #appMenu="matMenu">
-            <ng-template matMenuContent>
-                <button mat-menu-item>Profil</button>
-                <button mat-menu-item (click)="accountService.logout()">Wyloguj</button>
-            </ng-template>
-        </mat-menu>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Foody</a>
 
-        <button mat-flat-button color="primary" [matMenuTriggerFor]="appMenu">
-            <a>Użytkownik</a>
-        </button>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Przepisy</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Produkty</a>
+      </li>
+
+    </ul>
+    <span (onShown)="onShown()" class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
+      <a class="dropdown-toggle text-light" (click)="false" dropdownToggle>Profil</a>
+      <div class="dropdown-menu mt-3" *dropdownMenu >
+        <a class="dropdown-item">Ustawienia</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="accountService.logout()">Wyloguj</a>
+      </div>
+    </span>
+    <div *ngIf="!(accountService.currentUser$ | async)">
+      <app-nav-bar-login></app-nav-bar-login>
     </div>
-    <app-nav-bar-login></app-nav-bar-login>
-</mat-toolbar>
+  </div>
+</nav>

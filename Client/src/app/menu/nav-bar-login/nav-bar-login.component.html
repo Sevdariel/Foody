@@ -1,16 +1,17 @@
-<div class="login-fields-div" *ngIf="!(accountService.currentUser$ | async); else loggedOut">
+<!-- <div class="login-fields-div" *ngIf="!(accountService.currentUser$ | async); else loggedOut">
     <form [formGroup]="loginFormGroup" class="login-form-group" autocomplete="off" (ngSubmit)="login()">
-        <mat-form-field class=" login-mat-form-field">
-            <mat-label>Login</mat-label>
-            <input class="input" matInput type="text" placeholder="Login" formControlName="username" />
-        </mat-form-field>
-        <mat-form-field class="password-mat-form-field">
-            <mat-label>Hasło</mat-label>
-            <input matInput placeholder="Hasło" type="password" formControlName="password" />
-        </mat-form-field>
+        <input class="input" matInput type="text" placeholder="Login" formControlName="username" />
+        <input matInput placeholder="Hasło" type="password" formControlName="password" />
         <button class="nav-bar-login-button" mat-raised-button color="accent" type="submit">Zaloguj</button>
     </form>
 </div>
 <ng-template #loggedOut>
 
-</ng-template>
+</ng-template> -->
+
+<form [formGroup]="loginFormGroup" autocomplete="off" (ngSubmit)="login()" class="d-flex">
+    <input formControlName="username" class="form-control me-2" type="text" placeholder="Login" aria-label="Login">
+    <input formControlName="password" class="form-control me-2" type="password" placeholder="Hasło"
+        aria-label="Password">
+    <button class="btn btn-outline-success" type="submit">Zaloguj</button>
+</form>

@@ -1,12 +1,13 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuModule } from './menu/menu.module';
-import { FormsModule } from '@angular/forms';
-import { MaterialLoaderModule } from './material-loader/material-loader.module';
+import { HomeModule } from './home/home/home.module';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -14,12 +15,14 @@ import { MaterialLoaderModule } from './material-loader/material-loader.module';
   ],
   imports: [
     AppRoutingModule,
+    // BootstrapLoaderModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HomeModule,
     HttpClientModule,
-    MaterialLoaderModule,
     MenuModule,
+    // BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [

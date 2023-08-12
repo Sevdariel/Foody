@@ -9,4 +9,8 @@ import { AccountService } from 'src/app/shared/account/account.service';
 export class NavBarComponent {
 
   constructor(public accountService: AccountService) { }
+
+  public onShown() {
+    console.log('on shown')
+  }
 }
