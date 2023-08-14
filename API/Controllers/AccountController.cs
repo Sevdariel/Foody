@@ -30,7 +30,7 @@ namespace API.Controllers
 
             var user = new User
             {
-                Username = registerDto.Username.ToLower(),
+                Username = registerDto.Username,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt = hmac.Key,
             };
@@ -72,7 +72,7 @@ namespace API.Controllers
 
         private async Task<bool> UserExists(string username)
         {
-            return await dataContext.Users.AnyAsync(user => user.Username == username.ToLower());
+            return await dataContext.Users.AnyAsync(user => user.Username == username);
         }
     }
 }
