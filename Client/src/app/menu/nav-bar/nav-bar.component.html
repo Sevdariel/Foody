@@ -11,9 +11,9 @@
       </li>
 
     </ul>
-    <span (onShown)="onShown()" class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
+    <span class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
       <a class="dropdown-toggle text-light" (click)="false" dropdownToggle>Profil</a>
-      <div class="dropdown-menu mt-3" *dropdownMenu >
+      <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Ustawienia</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="accountService.logout()">Wyloguj</a>

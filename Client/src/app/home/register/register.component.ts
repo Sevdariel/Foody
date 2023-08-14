@@ -31,7 +31,7 @@ export class RegisterComponent {
     this.accountService.register(this.prepareDto())
       .pipe(
         takeUntil(this.destroyed$))
-      .subscribe();
+      .subscribe(() => this.cancelRegister());
   }
 
   public cancelRegister() {

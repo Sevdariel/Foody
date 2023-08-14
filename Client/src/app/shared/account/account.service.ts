@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, map } from 'rxjs';
+import { BehaviorSubject, filter, map, tap } from 'rxjs';
 import { ILoginDto, IRegisterDto, IUser } from './account-dto.model';
 
 @Injectable({
@@ -19,15 +19,16 @@ export class AccountService {
     return this.httpClient.post<IUser>(this.baseUrl + 'account/login', loginDto)
       .pipe(
         filter(loggedUser => !!loggedUser),
-        map(loggedUser => {
-          localStorage.setItem('user', JSON.stringify(loggedUser.token));
-          this.currentUserSource.next(loggedUser);
-        }),
+        tap(loggedUser => this.saveUserToken(loggedUser)),
       );
   }
 
   public register(registerDto: IRegisterDto) {
-    return this.httpClient.post<IRegisterDto>(this.baseUrl + 'account/register', registerDto);
+    return this.httpClient.post<IUser>(this.baseUrl + 'account/register', registerDto)
+      .pipe(
+        filter(registeredUser => !!registeredUser),
+        tap(registeredUser => this.saveUserToken(registeredUser))
+      );
   }
 
   public logout() {
@@ -36,6 +37,11 @@ export class AccountService {
   }
 
   public setCurrentUser(user: IUser) {
+    this.currentUserSource.next(user);
+  }
+
+  private saveUserToken(user: IUser) {
+    localStorage.setItem('user', JSON.stringify(user.token));
     this.currentUserSource.next(user);
   }
 }

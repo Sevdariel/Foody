@@ -33,14 +33,7 @@ export class NavBarLoginComponent {
     this.accountService.login(loginDto)
       .pipe(
         takeUntil(this.destroyed$),
-      )
-      .subscribe({
-        next: response => {
-          console.log(response);
-        },
-        error: error => console.log(error),
-        complete: () => { }
-      });
+      ).subscribe();
   }
 
   public logout() {
