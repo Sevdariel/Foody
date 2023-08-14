@@ -6,8 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuModule } from './menu/menu.module';
-import { HomeModule } from './home/home/home.module';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -15,14 +14,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   ],
   imports: [
     AppRoutingModule,
-    // BootstrapLoaderModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HomeModule,
     HttpClientModule,
     MenuModule,
-    // BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [

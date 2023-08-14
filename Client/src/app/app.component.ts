@@ -1,4 +1,4 @@
-import { IUser } from './shared/account/login-dto.model';
+import { IUser } from './shared/account/account-dto.model';
 import { AccountService } from 'src/app/shared/account/account.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
