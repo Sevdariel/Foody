@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { AccountService } from 'src/app/shared/account/account.service';
-import { ILoginDto } from 'src/app/shared/account/login-dto.model';
+import { ILoginDto } from 'src/app/shared/account/account-dto.model';
 
 @Component({
   selector: 'app-nav-bar-login',

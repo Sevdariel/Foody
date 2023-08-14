@@ -7,3 +7,8 @@ export interface IUser {
     username: string;
     token: string;
 }
+
+export interface IRegisterDto {
+    username: string;
+    password: string;
+}
