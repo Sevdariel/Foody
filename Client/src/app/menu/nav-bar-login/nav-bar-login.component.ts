@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { AccountService } from 'src/app/shared/account/account.service';
 import { ILoginDto } from 'src/app/shared/account/account-dto.model';
+import { AccountService } from 'src/app/shared/account/account.service';
 
 @Component({
   selector: 'app-nav-bar-login',
@@ -16,6 +17,7 @@ export class NavBarLoginComponent {
 
   constructor(
     public accountService: AccountService,
+    private router: Router,
     formBuilder: FormBuilder,
   ) {
     this.loginFormGroup = formBuilder.group({
@@ -33,10 +35,12 @@ export class NavBarLoginComponent {
     this.accountService.login(loginDto)
       .pipe(
         takeUntil(this.destroyed$),
-      ).subscribe();
+      )
+      .subscribe(() => this.router.navigateByUrl('/'));
   }
 
   public logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/')
   }
 }

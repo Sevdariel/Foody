@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Foody</a>
+    <a class="navbar-brand" routerLink="/">Foody</a>
 
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mew-auto mb-2 mb-md-0" *ngIf="accountService.currentUser$ | async">
       <li class="nav-item">
-        <a class="nav-link" href="#">Przepisy</a>
+        <a class="nav-link" routerLink="/recipes/recipes-list" routerLinkActive="active">Przepisy</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Produkty</a>
+        <a class="nav-link" routerLink="/products/products-list" routerLinkActive="active">Produkty</a>
       </li>
 
     </ul>

@@ -4,6 +4,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarLoginComponent } from './nav-bar-login/nav-bar-login.component';
 import { BootstrapLoaderModule } from '../bootstrap-loader/bootstrap-loader.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -11,10 +12,11 @@ import { BootstrapLoaderModule } from '../bootstrap-loader/bootstrap-loader.modu
     NavBarLoginComponent
   ],
   imports: [
+    BootstrapLoaderModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BootstrapLoaderModule,
+    RouterModule,
   ],
   exports: [
     NavBarComponent,
