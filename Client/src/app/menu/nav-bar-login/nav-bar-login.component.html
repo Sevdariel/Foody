@@ -1,14 +1,3 @@
-<!-- <div class="login-fields-div" *ngIf="!(accountService.currentUser$ | async); else loggedOut">
-    <form [formGroup]="loginFormGroup" class="login-form-group" autocomplete="off" (ngSubmit)="login()">
-        <input class="input" matInput type="text" placeholder="Login" formControlName="username" />
-        <input matInput placeholder="Hasło" type="password" formControlName="password" />
-        <button class="nav-bar-login-button" mat-raised-button color="accent" type="submit">Zaloguj</button>
-    </form>
-</div>
-<ng-template #loggedOut>
-
-</ng-template> -->
-
 <form [formGroup]="loginFormGroup" autocomplete="off" (ngSubmit)="login()" class="d-flex">
     <input formControlName="username" class="form-control me-2" type="text" placeholder="Login" aria-label="Login">
     <input formControlName="password" class="form-control me-2" type="password" placeholder="Hasło"

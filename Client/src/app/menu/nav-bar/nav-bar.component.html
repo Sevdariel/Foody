@@ -16,7 +16,7 @@
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Ustawienia</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="accountService.logout()">Wyloguj</a>
+        <a class="dropdown-item" (click)="logout()">Wyloguj</a>
       </div>
     </span>
     <div *ngIf="!(accountService.currentUser$ | async)">

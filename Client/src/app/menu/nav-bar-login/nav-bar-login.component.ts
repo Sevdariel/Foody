@@ -36,11 +36,6 @@ export class NavBarLoginComponent {
       .pipe(
         takeUntil(this.destroyed$),
       )
-      .subscribe(() => this.router.navigateByUrl('/'));
-  }
-
-  public logout() {
-    this.accountService.logout();
-    this.router.navigateByUrl('/')
+      .subscribe(() => this.router.navigateByUrl('/home'));
   }
 }
