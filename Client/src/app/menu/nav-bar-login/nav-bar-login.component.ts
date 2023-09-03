@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
 import { ILoginDto } from 'src/app/shared/account/account-dto.model';
 import { AccountService } from 'src/app/shared/account/account.service';
@@ -18,6 +19,7 @@ export class NavBarLoginComponent {
   constructor(
     public accountService: AccountService,
     private router: Router,
+    private toastrService: ToastrService,
     formBuilder: FormBuilder,
   ) {
     this.loginFormGroup = formBuilder.group({
@@ -36,6 +38,9 @@ export class NavBarLoginComponent {
       .pipe(
         takeUntil(this.destroyed$),
       )
-      .subscribe(() => this.router.navigateByUrl('/home'));
+      .subscribe({
+        next: () => this.router.navigateByUrl('/home'),
+        error: error => this.toastrService.error(error.error)
+      });
   }
 }

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IRegisterDto } from 'src/app/shared/account/account-dto.model';
 import { Subject, takeUntil } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,7 @@ export class RegisterComponent {
 
   constructor(
     private accountService: AccountService,
+    private toastrService: ToastrService,
     formBuilder: FormBuilder) {
     this.formGroup = formBuilder.group({
       username: [undefined, Validators.required],
@@ -31,7 +33,10 @@ export class RegisterComponent {
     this.accountService.register(this.prepareDto())
       .pipe(
         takeUntil(this.destroyed$))
-      .subscribe(() => this.cancelRegister());
+      .subscribe({
+        next: () => this.cancelRegister(),
+        error: error => this.toastrService.error(error.error),
+      });
   }
 
   public cancelRegister() {
