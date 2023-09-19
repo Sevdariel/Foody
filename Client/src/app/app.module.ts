@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeModule } from './home/home.module';
+import { StartModule } from './home/start.module';
 import { MenuModule } from './menu/menu.module';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -18,7 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HomeModule,
+    StartModule,
     HttpClientModule,
     MenuModule,
     ToastrModule.forRoot({

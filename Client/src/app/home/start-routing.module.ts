@@ -9,10 +9,6 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'landing-page',
-    component: LandingPageComponent,
-  },
-  {
     path: '',
     component: LandingPageComponent,
   }
@@ -22,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule { }
+export class StartRoutingModule { }

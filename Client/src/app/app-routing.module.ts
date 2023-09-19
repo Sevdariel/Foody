@@ -1,22 +1,30 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivateFn } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'products',
-    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
-  },
-  {
-    path: 'recipes',
-    loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule),
+    path: '',
+    loadChildren: () => import('./home/start.module').then(m => m.StartModule),
   },
   {
     path: '',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+    runGuardsAndResolvers: 'always',
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'products',
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
+      },
+      {
+        path: 'recipes',
+        loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule),
+      },
+    ],
   },
   {
     path: '**',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+    loadChildren: () => import('./home/start.module').then(m => m.StartModule),
     pathMatch: 'full',
   }
 ];

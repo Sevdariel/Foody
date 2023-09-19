@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeRoutingModule } from './home-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { StartRoutingModule } from './start-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +15,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
   imports: [
     CommonModule,
     FormsModule,
-    HomeRoutingModule,
+    StartRoutingModule,
     ReactiveFormsModule,
   ],
 })
-export class HomeModule { }
+export class StartModule { }

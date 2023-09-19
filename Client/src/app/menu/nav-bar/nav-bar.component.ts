@@ -15,6 +15,6 @@ export class NavBarComponent {
 
   public logout() {
     this.accountService.logout();
-    this.router.navigateByUrl('/landing-page');
+    this.router.navigateByUrl('/');
   }
 }
